@@ -41,5 +41,17 @@ public class LoginLogoutTest {
 
         WebElement welcomeUser = driver.findElement(By.id("welcome"));
         Assert.assertEquals(welcomeUser.getText(), "Welcome Paul");
+        Assert.assertTrue(driver.getCurrentUrl().contains("/dashboard"));
+
+        //back to previous page
+        driver.navigate().back();
+        Assert.assertTrue(driver.getCurrentUrl().contains("/login"));
+        driver.navigate().refresh();
+
+        // assert error message
+
+       Assert.assertTrue(driver.findElement(By.xpath("//div[@class='message warning']")).getText().contains("Invalid Request"));
+
+       Assert.assertEquals(driver.findElement(By.xpath("//div[@class='message warning']")).getText(), "Invalid Request");
     }
 }
