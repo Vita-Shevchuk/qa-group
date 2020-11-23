@@ -53,5 +53,11 @@ public class LoginLogoutTest {
        Assert.assertTrue(driver.findElement(By.xpath("//div[@class='message warning']")).getText().contains("Invalid Request"));
 
        Assert.assertEquals(driver.findElement(By.xpath("//div[@class='message warning']")).getText(), "Invalid Request");
+
+       // Assert button Subscribe present
+
+        WebElement subscribeButton = driver.findElement(By.id("Subscriber_link"));
+        Assert.assertTrue(subscribeButton.isDisplayed());
+
     }
 }
